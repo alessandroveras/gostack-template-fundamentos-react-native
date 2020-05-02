@@ -44,8 +44,7 @@ const Dashboard: React.FC = () => {
   }, []);
 
   function handleAddToCart(item: Product): void {
-    const productToAdd = { ...item, quantity: 1 };
-    addToCart(productToAdd);
+    addToCart(item);
   }
 
   return (
@@ -58,7 +57,7 @@ const Dashboard: React.FC = () => {
           ListFooterComponentStyle={{
             height: 80,
           }}
-          renderItem={({ item }) => (
+          renderItem={({ item }: { item: Product }) => (
             <Product>
               <ProductImage source={{ uri: item.image_url }} />
               <ProductTitle>{item.title}</ProductTitle>
